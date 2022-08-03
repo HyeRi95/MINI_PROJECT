@@ -1,0 +1,219 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>만족도 조사</title>
+        <link rel="icon" type="image/x-icon" href="{% static 'libapp/assets/favicon.ico'%}" />
+        <!-- Font Awesome icons (free version)-->
+        <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{% static 'libapp/css/styles.css'%}" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light" id="mainNav">
+            <div class="container px-4 px-lg-5">
+                <a class="navbar-brand" href="/libapp/index/">LIB WEB</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                    Menu
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ms-auto py-4 py-lg-0">
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/libapp/index/">Home</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/libapp/page_control/lib_list_page/">전국도서관 리스트</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/libapp/survey_new/">만족도조사</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/libapp/analysis_new/">만족도 조사 결과</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/libapp/about/">국민 독서 분석</a></li>
+                        <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/libapp/login/">로그아웃</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Page Header-->
+        <header class="masthead" style="background-image: url('/static/libapp/assets/img/만족도조사.jpg')">
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="page-heading">
+                            <h2>만족도 조사</h2>
+                            <span class="subheading">여러분의 도서관 이용 만족도를 이야기해 주세요</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Main Content-->
+        <center>
+            <h2>* 방문 도서관 만족도 항목 *</h2>
+            <form action="/libapp/insert/" method="post"><!-- 포스트 방식으로 넘어온다-->
+                {% csrf_token %}
+            <table>
+                <tr>
+                    <td style = 'background-color : slategray'><span style = 'color : white'>1. 귀하의 성별은?</span></td>
+                    <tr>
+                    <td>
+                        <label for="genM">남</label>
+                        <input type="radio" id="genM" name="gender" value="남" checked="checked"> <!-- 최초에 기본 선택 : 남자-->
+                        &nbsp
+                        <label for="genF">여</label>
+                        <input type="radio" id="genF" name="gender" value="여"> <!-- check된 값이 넘어간다-->
+                        <br></br>
+                    </td>
+                    </tr>
+                </tr>
+        
+                <tr>
+                    <td style = 'background-color :	slategray'><span style = 'color : white'>2. 귀하의 나이는?</span></td>
+                    <tr>
+                    <td>
+                        <label for="age10">10대</label>
+                        <input type="radio" id="age10" name="age" value="10" checked="checked">
+                        &nbsp
+                        <label for="age20">20대</label>
+                        <input type="radio" id="age20" name="age" value="20">
+                        &nbsp
+                        <label for="age30">30대</label>
+                        <input type="radio" id="age30" name="age" value="30">
+                        &nbsp
+                        <label for="age40">40대</label>
+                        <input type="radio" id="age40" name="age" value="40">
+                        &nbsp
+                        <label for="age50">50대</label>
+                        <input type="radio" id="age50" name="age" value="50">
+                        <br></br>
+                    </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td style = 'background-color :slategray'><span style = 'color : white'>3. 귀하가 방문한 도서관의 사서는 친절 하게 응대해 주었습니까 ?</span></td>
+                    <tr>
+                    <td>
+                        <label for="YY_lib">매우그렇다</label>
+                        <input type="radio" id="YY_lib" name="lib_survey" value="매우그렇다" checked="checked">
+                        &nbsp
+                        <label for="Y_lib">그렇다</label>
+                        <input type="radio" id="Y_lib" name="lib_survey" value="그렇다">
+                        &nbsp
+                        <label for="S_lib">보통이다</label>
+                        <input type="radio" id="S_lib" name="lib_survey" value="보통이다">
+                        &nbsp
+                        <label for="N_lib">그렇지않다</label>
+                        <input type="radio" id="N_lib" name="lib_survey" value="그렇지않다">
+                        &nbsp
+                        <label for="NN_lib">매우그렇지않다</label>
+                        <input type="radio" id="NN_lib" name="lib_survey" value="매우그렇지않다">
+                        <br></br>
+                    </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td style = 'background-color :slategray'><span style = 'color : white'>4. 도서관 구내식당에 대한 만족도는 어떻습니까?</span></td>
+                    <tr>
+                    <td>
+                        <label for="YY_food">매우만족</label>
+                        <input type="radio" id="YY_food" name="food_survey" value="매우만족" checked="checked">
+                        &nbsp
+                        <label for="Y_food">만족</label>
+                        <input type="radio" id="Y_food" name="food_survey" value="만족">
+                        &nbsp
+                        <label for="S_food">보통</label>
+                        <input type="radio" id="S_food" name="food_survey" value="보통">
+                        &nbsp
+                        <label for="N_food">불만족</label>
+                        <input type="radio" id="N_food" name="food_survey" value="불만족">
+                        &nbsp
+                        <label for="NN_food">매우불만족</label>
+                        <input type="radio" id="NN_food" name="food_survey" value="매우불만족">
+                        <br></br>
+                    </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td style = 'background-color :slategray'><span style = 'color : white'>5. 귀하의 도서관 한달 방문 횟수는 어떻게 됩니까?</span></td>
+                    <tr>
+                    <td>
+                        <label for="under_1">1회미만</label>
+                        <input type="radio" id="under_1" name="visit_survey" value="1회미만" checked="checked">
+                        &nbsp
+                        <label for="under_5">5회미만</label>
+                        <input type="radio" id="under_5" name="visit_survey" value="5회미만">
+                        &nbsp
+                        <label for="under_10">10회미만</label>
+                        <input type="radio" id="under_10" name="visit_survey" value="10회미만">
+                        &nbsp
+                        <label for="under_20">20회미만</label>
+                        <input type="radio" id="under_20" name="visit_survey" value="20회미만">
+                        &nbsp
+                        <label for="over_20">20회이상</label>
+                        <input type="radio" id="over_20" name="visit_survey" value="20회이상">
+                        <br></br>
+                    </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td style = 'background-color :slategray'><span style = 'color : white'>6. 귀하의 도서관 방문 목적은 무엇입니까?</span></td>
+                    <tr>
+                    <td>
+                        <label for="read">독서</label>
+                        <input type="radio" id="read" name="purpose_survey" value="독서" checked="checked">
+                        &nbsp
+                        <label for="rest">휴식</label>
+                        <input type="radio" id="rest" name="purpose_survey" value="휴식">
+                        &nbsp
+                        <label for="study">공부</label>
+                        <input type="radio" id="study" name="purpose_survey" value="공부">
+                        &nbsp
+                        <label for="etc">기타</label>
+                        <input type="radio" id="etc" name="purpose_survey" value="기타">
+                        <br></br>
+                    </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td style = 'background-color :slategray'><span style = 'color : white'>7. 도서관에서 운영하는 프로그램에 참여한 적이 있습니까?</span></td>
+                    <tr>
+                    <td>
+                        <label for="Y">예</label>
+                        <input type="radio" id="Y" name="program_survey" value="예" checked="checked">
+                        &nbsp
+                        <label for="N">아니오</label>
+                        <input type="radio" id="N" name="program_survey" value="아니오">
+                        <br></br>
+                    </td>
+                    </tr>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                    <br>
+                    <center>
+                    <input type="submit" value="설문완료"> <!-- submit (명령어) : 상단 action에 있는 링크로 저장된 값 전달 -->
+                    <input type="reset" value="초기화">
+                    </center>
+                </tr>
+            </table>
+            </form>
+        </center>
+        <!-- Footer-->
+        <footer class="border-top">
+            <div class="container px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="small text-center text-muted fst-italic">Copyright &copy; LibWeb_SH_HR_SK 2022</div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="/static/libapp/js/scripts.js"></script>
+    </body>
+</html>

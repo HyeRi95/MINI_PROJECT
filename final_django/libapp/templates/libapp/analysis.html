@@ -1,0 +1,31 @@
+{% load static %} <!-- static 사용위해-->
+<html>
+    <head>
+        <title>설문 분석결과 보기</title>
+    </head>
+    <body>
+        <h3 align = 'center'>
+            커피 전문점에 대한 소비자 인식 분석 결과
+        </h3>
+        <hr/>
+
+        <h3 align = 'center'>
+            [교차표]
+        </h3>
+        <p><center>{{crossTab | safe}}</center></p> <!-- | safe : 들어오는 결과 html로 보여준다-->
+        <hr/>
+        <h3 align = 'center'>
+            [검정결과 해석]
+        </h3>
+        <p><center>{{results | safe}}</center></p>
+
+        <p align = 'center'>
+            [교차표 시각화]
+        </h3>
+
+        <p align = 'center'>
+            <img src = "{% static 'libapp/images/libapp2.png' %}" width='500' height='350'>
+        
+        </p>
+    </body>
+</html>
