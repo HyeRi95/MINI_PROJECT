@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<!-- static 폴더의 데이터 활용하기 -->
+{% load static %}
+
+<html>
+    <!-- 브라우저에서 html 실행 시 가장 먼저 읽어 들이는 곳 -->
+    <!-- Javascript, css 등의 처리를 기본적으로 수행 -->
+
+    <head>
+        <title>::: main페이지 :::</title>
+    </head>
+    <!-- 몸체 부분 -->
+    <!-- 브라우저에 보이는 영역 -->
+
+    <body>
+        <!-- 메뉴 만들기 -->
+        <!-- 링크 주소는 urls.py의 URL과 동일하게 작성 -->
+        <nav style="background-color:darkgreen; font-size:150%; text-align:center;">
+            <a href="" style="color:white;">[sample]</a> |
+            <a href="" style="color:white;">[index01]</a> |
+            <a href="" style="color:white;">[index_css02]</a> |
+            <a href="" style="color:white;">[index_css03]</a> |
+            <a href="" style="color:white;">[index_css04]</a> 
+        </nav>
+
+        <h2><center>두번째 크기 헤드라인</center></h2>
+        <h3><center>세번째 크기 헤드라인</center></h3>
+
+        <p><center>문단 영역을 나타냅니다.</center></p>
+
+        <hr/>
+    </body>
+</html>

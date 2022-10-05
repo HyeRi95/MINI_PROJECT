@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>회원 로그인 화면</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'libapp/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <script>
+        function send(){
+            alert("로그인 하시겠습니까?");
+            document.getElementById("fm").submit()
+        }
+
+        function logout(){
+            alert("로그아웃 처리로 이동");
+            location.href = "/libapp/logout/"
+        }
+    </script>
+</head>
+
+<body>
+    {% block asd %}
+    {% endblock %}
+
+    <div class="container">
+    <div class="form sign-in-container">
+        {% if sMem_id == None %}
+        <form id="fm" method="post" action="/libapp/main/">
+        {% csrf_token %}
+                <h1>로그인</h1>
+                <input type="text" placeholder="User Id" name="mem_id" value="">
+                <input type="password" placeholder="Password" name="mem_pass" value="">
+                <button type="button" onclick="send()">로그인</button>
+
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>회원가입</h1>
+                    <p>Sign up here if you don't have account.</p>
+                    <button type="button" onclick="location.href='/libapp/register/'">회원가입</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% else %}
+    <p>로그인 정보 확인</p>
+    <hr/> {{sMem_name}} ( {{sMem_id}} ) 님 환영합니다.
+    <hr/>
+    <button type="button" onclick="logout();">로그아웃</button> 
+    {% endif %}
+</body>
+</html>
